@@ -17,11 +17,12 @@ public class Test {
 		List<Class> classList = new ArrayList<Class>();
 		classList.add(GisWithin.class);
 		conf.setSiddhiExtensions(classList);
-		
+
 		SiddhiManager siddhiManager = new SiddhiManager();
 		siddhiManager.getSiddhiContext().setSiddhiExtensions(classList);
-		System.out.println(siddhiManager.getSiddhiContext().getSiddhiExtensions().toString());
-		
+		System.out.println(siddhiManager.getSiddhiContext()
+				.getSiddhiExtensions().toString());
+
 		siddhiManager
 				.defineStream("define stream cseEventStream (symbol1 string, symbol2 string, lattitude long, longitude long) ");
 
@@ -43,14 +44,13 @@ public class Test {
 		});
 		InputHandler inputHandler = siddhiManager
 				.getInputHandler("cseEventStream");
-		inputHandler.send(new Object[] { "I", "BM", 756l, 100l });
-		inputHandler.send(new Object[] { "IBM", "", 756l, 25l });
-		inputHandler.send(new Object[] { "IB", "M", 756l, 100l });
+		inputHandler.send(new Object[] { "s1", "s2", 78.56, 6.99 });
+		inputHandler.send(new Object[] { "s1", "s2", 78.56, 6.99 });
+		inputHandler.send(new Object[] { "s1", "s2", 78.56, 6.99 });
 		Thread.sleep(100);
 		// Assert.assertEquals(3, count);
 		// Assert.assertEquals("Event arrived", true, eventArrived);
 		siddhiManager.shutdown();
-		//gis:within(symbol1,symbol2)
 
 	}
 }

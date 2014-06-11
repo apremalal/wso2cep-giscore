@@ -1,12 +1,13 @@
 package org.wso2.cep.extension.gis;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import org.wso2.siddhi.core.config.SiddhiContext;
 import org.wso2.siddhi.core.exception.QueryCreationException;
 import org.wso2.siddhi.core.executor.function.FunctionExecutor;
 import org.wso2.siddhi.query.api.definition.Attribute;
 import org.wso2.siddhi.query.api.extension.annotation.SiddhiExtension;
-
 import org.geotools.geometry.jts.JTSFactoryFinder;
 import org.geotools.measure.Latitude;
 
@@ -20,7 +21,7 @@ import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-@SiddhiExtension(namespace = "gis", function = "iswithin")
+@SiddhiExtension(namespace = "geo", function = "iswithin")
 public class GisWithin extends FunctionExecutor {
 
 	Logger log = Logger.getLogger(GisWithin.class);
@@ -32,6 +33,7 @@ public class GisWithin extends FunctionExecutor {
 	 * @param types
 	 * @param siddhiContext
 	 */
+	
 	@Override
 	public void init(Attribute.Type[] types, SiddhiContext siddhiContext) {
 		returnType = Attribute.Type.BOOL;
