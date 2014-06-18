@@ -19,18 +19,11 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
 @SiddhiExtension(namespace = "geo", function = "iswithin")
-public class GeoWithin extends FunctionExecutor {
+public class GeoIsWithin extends FunctionExecutor {
 
-	Logger log = Logger.getLogger(GeoWithin.class);
+	Logger log = Logger.getLogger(GeoIsWithin.class);
 	private GeometryFactory geometryFactory;
 	private Polygon polygon;
-
-	/**
-	 * Method will be called when initialising the custom function
-	 * 
-	 * @param types
-	 * @param siddhiContext
-	 */
 
 	@Override
 	public void init(Attribute.Type[] types, SiddhiContext siddhiContext) {
@@ -67,17 +60,10 @@ public class GeoWithin extends FunctionExecutor {
 		}
 	}
 
-	/**
-	 * Method called when sending events to process
-	 * 
-	 * @param obj
-	 * @return
-	 */
 	@Override
 	protected Object process(Object obj) {
 
 		Object functionParams[] = (Object[]) obj;
-		
 		double lattitude = (Double) functionParams[0];
 		double longitude = (Double) functionParams[1];
 		

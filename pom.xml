@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.wso2.cep</groupId>
 	<artifactId>geo-extension</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>bundle</packaging>
 	<build>
 		<plugins>
@@ -15,7 +15,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>org.wso2.cep.extension.gis.*,com.vividsolutions.*,org.jdom.*,javax.media.*,org.geotools.*;</Export-Package>
+						<Bundle-SymbolicName>${pom.groupId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.groupId}</Bundle-Name>
+						<Export-Package>org.wso2.cep.*,com.vividsolutions.*,org.jdom.*,javax.vecmath.*,javax.media.*,org.geotools.*,org.opengis.*,org.hsqldb.*,org.hamcrest.*;</Export-Package>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -68,6 +70,11 @@
 		<dependency>
 			<groupId>org.geotools</groupId>
 			<artifactId>gt-shapefile</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-hsql</artifactId>
 			<version>${geotools.version}</version>
 		</dependency>
 		<dependency>
