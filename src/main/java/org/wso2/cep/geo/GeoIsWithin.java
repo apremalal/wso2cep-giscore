@@ -64,11 +64,12 @@ public class GeoIsWithin extends FunctionExecutor {
 	protected Object process(Object obj) {
 
 		Object functionParams[] = (Object[]) obj;
-		double lattitude = (Double) functionParams[0];
-		double longitude = (Double) functionParams[1];
+		
+		double longitude = (Double) functionParams[0];
+		double lattitude = (Double) functionParams[1];
 		
 		/* Creating a point */
-		Coordinate coord = new Coordinate(lattitude, longitude);
+		Coordinate coord = new Coordinate(longitude, lattitude);
 		Point point = geometryFactory.createPoint(coord);
 
 		return point.within(polygon);

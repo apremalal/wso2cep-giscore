@@ -18,7 +18,7 @@ import org.wso2.siddhi.core.stream.input.InputHandler;
 import org.wso2.siddhi.core.util.EventPrinter;
 
 @RunWith(JUnit4.class)
-public class GeoTestCase {
+public class GeoIsWithinTestCase {
 
 	private SiddhiManager siddhiManager;
 	private String withinTrueQueryReference;
@@ -36,7 +36,7 @@ public class GeoTestCase {
 		siddhiManager.defineStream("define stream gpsInputStream (lattitude double, longitude double, deviceid string) ");
 
 		withinTrueQueryReference =
-		                           siddhiManager.addQuery("from gpsInputStream[geo:iswithin(lattitude, longitude, \"{ 'type': 'Polygon', 'coordinates': [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] }\")==true] "
+		                           siddhiManager.addQuery("from gpsInputStream[geo:iswithin(longitude, lattitude, \"{ 'type': 'Polygon', 'coordinates': [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] }\")==true] "
 		                                                  + "select 1 as iswithin "
 		                                                  + "insert into gpsOutputStream;");
 
